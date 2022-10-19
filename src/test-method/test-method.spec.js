@@ -15,6 +15,7 @@ describe('test() method', () => {
       expect(result).toBe(false);
     });
   });
+
   describe('OR operator => /dog|cat|bird|fish/', () => {
     const petRegex = /dog|cat|bird|fish/;
     it('should match the string "John has a pet dog."', () => {
@@ -54,6 +55,27 @@ describe('test() method', () => {
     });
     it('should NOT match the string "Regex Java Script Tips"', () => {
       expect(ignoreCaseRegex.test('Regex Java Script Tips')).toBe(false);
+    });
+  });
+
+  describe('wildcard character "."', () => {
+    const testRegex = /.un/;
+    it('/.un/ should return true on the sentence "Regex is fun!"', () => {
+      const sentence = 'Regex is fun!';
+      const result = testRegex.test(sentence);
+      expect(result).toBe(true);
+    });
+
+    it('/.un/ should return true on the sentence "I like to run"', () => {
+      const sentence = 'I like to run';
+      const result = testRegex.test(sentence);
+      expect(result).toBe(true);
+    });
+
+    it('/.un/ should return true on the sentence "The sun is hot"', () => {
+      const sentence = 'The sun is hot';
+      const result = testRegex.test(sentence);
+      expect(result).toBe(true);
     });
   });
 });
